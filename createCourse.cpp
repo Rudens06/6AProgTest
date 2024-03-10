@@ -154,6 +154,19 @@ ErrorCode createCourse(const string &courseName, const string &courseCategory, c
 }
 
 /// TESTĒŠANAS FUNKCIJA DATU PĀRBAUDĒM (TEST CASES)
+
+void testCreateCourse(int testCaseID, ErrorCode expectedResult, string courseName, string categoryName, Image image, string description, string price) {
+    ErrorCode result = createCourse(courseName, categoryName, image, description, price);
+    if (result == expectedResult)
+    {
+        cout << "#" << testCaseID << ": Passed" << endl;
+    }
+    else
+    {
+        cout << "#" << testCaseID << ": Failed" << endl;
+    }
+}
+   
 void functionTesting()
 {
     // Valid function inputs
@@ -161,19 +174,10 @@ void functionTesting()
     string validCategoryName = "category 1";
     Image validImage = {"JPEG", 1024 * 1024};
     string validDescription = "This is a valid description";
-    float validPrice = 10.00;
+    string validPrice = "10.00";
 
-    // TEST CASE 1 (example)
-    Image validImage = {"JPEG", 1024 * 1024};
-    ErrorCode result1 = createCourse("Course 1", "Category 1", validImage, "Description 1", "49.99");
-    if (result1 == SUCCESS)
-    {
-        cout << "#1: Passed" << endl;
-    }
-    else
-    {
-        cout << "#1: Failed" << endl;
-    }
+    // TEST CASE 01
+    testCreateCourse(1, ERROR_001, "", validCategoryName, validImage, validDescription, validPrice);
 }
 
 int main()
@@ -199,7 +203,7 @@ int main()
     /// Izsaukums testēšanas funkcijai
     try
     {
-        // functionTesting(); // Atkomentēt pēc nepieciešamības
+        functionTesting(); // Atkomentēt pēc nepieciešamības
     }
     catch (string error)
     {
