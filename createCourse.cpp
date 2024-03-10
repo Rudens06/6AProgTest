@@ -175,26 +175,25 @@ void functionTesting()
     Image validImage = {"JPEG", 1024 * 1024};
     string validDescription = "This is a valid description";
     string validPrice = "10.00";
-
-    // courseName TESTS
-    // TEST CASE 01
-    testCreateCourse(1, ERROR_001, "", validCategoryName, validImage, validDescription, validPrice);
-
-    // TEST CASE 02
-    testCreateCourse(2, SUCCESS, validCourseName, validCategoryName, validImage, validDescription, validPrice);
     
-    // TEST CASE 03
+    // Testing Variable definition
+    string emptyString = "";
     string hundredSymbolString = "PK9fpGN0MH#M.UjiE7X4#[k8AqdeVpQ&w5}*76BqQA5A*%]bcN@cP;jqv*:1f]cGj4RF[yFzx{K$L[3[chL0QAT!MpMg(:n+!*$h";
-    testCreateCourse(3, SUCCESS, hundredSymbolString, validCategoryName, validImage, validDescription, validPrice);
-
     string moreThanHundredSymbolString = "PK9fpGN0MH#M.UjiE7X4#[k8AqdeVpQ&w5}*76BqQA5A*%]bcN@cP;jqv*:1f]cGj4RF[yFzx{K$L[3[chL0QAT!MpMg(:n+!*$hqsssda";
-    // TEST CASE 04
-    testCreateCourse(4, ERROR_009, moreThanHundredSymbolString, validCategoryName, validImage, validDescription, validPrice);
-
-    // TEST CASE 05
+    
+    
+    // courseName TESTS
+    testCreateCourse(1, ERROR_001, emptyString, validCategoryName, validImage, validDescription, validPrice);
+    testCreateCourse(2, SUCCESS, validCourseName, validCategoryName, validImage, validDescription, validPrice);
+    testCreateCourse(3, SUCCESS, hundredSymbolString, validCategoryName, validImage, validDescription, validPrice);
     testCreateCourse(4, ERROR_009, moreThanHundredSymbolString, validCategoryName, validImage, validDescription, validPrice);
     // courseName TESTS END
 
+    // courseDescription TESTS
+    testCreateCourse(5, ERROR_001, validCourseName, emptyString, validImage, validDescription, validPrice);
+    testCreateCourse(6, SUCCESS, validCourseName, hundredSymbolString, validImage, validDescription, validPrice);
+    testCreateCourse(7, ERROR_009, validCourseName, moreThanHundredSymbolString, validImage, validDescription, validPrice);
+    // courseDescription TESTS END
 }
 
 int main()
